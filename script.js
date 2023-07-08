@@ -9,12 +9,15 @@ ansBtn.addEventListener('click', e => {
     if(display.value){
         try {
             const num = eval(display.value);
-            if(!num){
+            if(!num || typeof num == 'function'){
                 throw Error();
             }
             display.value = num;
         } catch (error) {
             display.value = 'Error';
+            setTimeout(_ => {
+                display.value = '';
+            }, 1000);
         }
     }
 });
